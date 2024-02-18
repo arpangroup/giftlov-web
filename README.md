@@ -1,5 +1,4 @@
-# Gitlov WebPos React App(Use Vite toolkit to create react app)
-
+# Gitlov WebPos React(Vite) App
 [![Build Status](https://vitejs.dev/)](https://github.com/arpangroup/giftlov-api)
 
 ## _Steps to run the App:_
@@ -14,18 +13,18 @@ npm run dev
 
 
 ## _Feature Includes:_
-| Id    |       FEATURE          |
-+ ------+------------------------|
-| 01 | Login Page                |
-| 02 | Protected Routes          |
-| 03 | Role Base UI Access       |
-| 04 | Refresh Token Mechanism   |
-| 05 | SOLID isung custom Hooks  |
-| 06 | Catalog Page              |
-| 07 | Add to Cart item          |
-| 08 | Checkout Page             |
-| 09 | Submit Order Validation   |
-| 10 | Invoice Page(partial)     |
+| Id | FEATURE |
+| ------ | ------ |
+| 01 | Login Page|
+| 02 | Protected Route |
+| 03 | Role Base UI Access |
+| 04 | Refresh Token Mechanism |
+| 05 | SOLID using custom Hooks |
+| 06 | Catalog Page |
+| 07 | Add to Cart item |
+| 08 | Checkout Pag |
+| 09 | Submit Order Validation |
+| 10 | Invoice Page(partial) |
 
 
 
