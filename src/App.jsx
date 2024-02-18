@@ -44,7 +44,8 @@ function App() {
           </Route>
 
           <Route element={<RequireAuth allowedRoles={[ROLES.placeOrder]}/>}>
-            <Route path='/checkout' element={<Checkout/>}/>
+            <Route path='/checkout' element={<Checkout/>}/> 
+            <Route path='/invoice' element={<Invoice/>}/>
           </Route>
 
 

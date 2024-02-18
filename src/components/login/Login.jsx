@@ -13,7 +13,6 @@ import useAuth from "../../hooks/useAuth";
 const Login = () => {
   //const {setAuth} = useContext(AuthContext)
   const {setAuth} = useAuth();
-  const [posts, getPosts] = useState([]);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -35,19 +34,19 @@ const Login = () => {
       setLoading(false);
       return;
     }
-    // const response = await authenticate(inputUsername, inputPassword)
-    // console.log("RESPONSE: ", response);
-    // const accessToken = response?.token;
-    // const roles = response?.privileges;
-    // const fullName = response?.fullName;
-    // setAuth({username: fullName, accessToken, roles});
-    setAuth({username: "jofnDOe", accessToken: "ggg", roles:["placeOrder", "items", "orderStatus", "queryOrders"]});
+    const response = await authenticate(inputUsername, inputPassword)
+    console.log("RESPONSE: ", response);
+    const accessToken = response?.token;
+    const roles = response?.privileges;
+    const fullName = response?.fullName;
+    setAuth({username: fullName, accessToken, roles});
 
     // clear input fields
     setInputUsername('');
     setInputPassword('');
     setLoading(false);
-    navigate(from, {replace: true});
+    // navigate(from, {replace: true});
+    navigate('/catalog', {state: {from: location}, replace: true})
   };
 
   const handleForgotPassword = () => {};

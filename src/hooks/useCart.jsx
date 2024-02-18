@@ -8,16 +8,27 @@ const useCart = () => {
 
     const {cart, setCartItem} = useContext(AuthContext)
 
-    const cartItems = () => {
-       return  cart.cartItems;
-    };
+    const cartItems = cart.cartItems;
 
     const setCart = (cartItem) => {
+        const newItems = [...cart.cartItems, cartItem];
+        const totalAmount = newItems.map(it => it.toValue).reduce((a,b) => a+b, 0);
         setCartItem(prev =>{
             return {
                 ...prev,
-                cartItems: [...prev.cartItems, cartItem]
+                cartItems: newItems,
+                toralItem: newItems.length,
+                totalCartAmount: totalAmount
             }
+        });
+        console.log("CART: ", cart)
+    };
+
+    const resetCart = () => {
+        setCartItem({
+                toralItem: 0,
+                totalCartAmount: 0,
+                cartItems: []
         });
         console.log("CART: ", cart)
     };
@@ -27,7 +38,7 @@ const useCart = () => {
         return isItemExist;
     };
     
-    return {cart, setCart, cartItems, isItemExistInCart};
+    return {cart, setCart, cartItems, isItemExistInCart, resetCart};
 
 
    

@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useEffect } from "react";
 
 const BASE_URL = 'http://localhost:8080';
 axios.defaults.baseURL = BASE_URL;
@@ -23,10 +22,8 @@ export const getCatalogItems = async (current=1, rowCount=10, includePricingDeta
 };
 
 export const placeOrder = async (orderRequest) => {
-    let result = await fetch(`${baseUrl}/orders/placeOrder`, {
-        method: 'post',
-        body: orderRequest
-    });
+    let result = await axios.post(`/orders/placeOrder`, orderRequest)
+    .then(resp => resp.data)
+    .catch(err => console.log("ORDER_RESPONSE: ", err))
     return result;
 };
-
