@@ -1,38 +1,24 @@
+import axios from "axios";
 import { useEffect } from "react";
 
-const baseUrl = 'http://localhost:8080';
-const commonHeaders = {
-    'X-GIFTLOV-DATE': '12022024170000',
-    'Accept': 'application/json',
-    'Content-Type': 'application/json',
-}
+const BASE_URL = 'http://localhost:8080';
+axios.defaults.baseURL = BASE_URL;
 
+export default axios.create({
+    baseURL: BASE_URL
+});
 
-
-
-export const authenticate = async (username, password) => {
-    debugger;
-    // const authRequest = {username, password};
-    // let result = await fetch("localhost:8080'/authenticate", {
-    //     method: 'post',
-    //     headers: {...commonHeaders},
-    //     body: authRequest
-    // }).catch(err => console.log("ERROR: ", err))
-    // return result;
-    let result = await fetch(`${baseUrl}/authenticate`, {
-        method: 'post',
-        headers: {...commonHeaders},
-        body: JSON.stringify({
-            username: username,
-            password: password
-        })
-    });
+export const authenticate = async(username, password) => {    
+    let result = await axios.post(`/authenticate`, { username, password})
+    .then(resp => resp.data)
+    .catch(err => console.log("ERROR: ", err))
     return result;
-
 };
 
-export const getCatalogItems = async (current, rowCount, includePricingDetails = false, searchPhrase = false) => {
-    let result = await fetch(`${baseUrl}/items?current=${current}&rowCount=${rowCount}&includePricingDetails=${includePricingDetails}&searchPhrase=${searchPhrase}`);
+export const getCatalogItems = async (current=1, rowCount=10, includePricingDetails = false, searchPhrase = false) => {
+    let result = await axios.get(`/items?current=${current}&rowCount=${rowCount}&includePricingDetails=${includePricingDetails}&searchPhrase=${searchPhrase}`)
+    .then(resp => resp.data)
+    .catch(err => console.log("ERROR: ", err))
     return result;
 };
 

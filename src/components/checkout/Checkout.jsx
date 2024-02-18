@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { Button, Col, Container, FloatingLabel, Form, InputGroup, Row } from "react-bootstrap";
 import { v4 as uuidv4 } from 'uuid';
+import useCart from "../../hooks/useCart";
 
 const uniqueId = uuidv4();
 const Checkout = () => {
+    const {cart, setCart, cartItems, isItemExistInCart} = useCart();
+
     const [orderRequest, setOrderRequest] = useState({
         customerName: '',
         firstName: '',

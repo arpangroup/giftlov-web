@@ -29,16 +29,19 @@ const Login = () => {
     event.preventDefault();
     setAlert('');
     setLoading(true);
-    console.log(`Username :${inputUsername}, Password :${inputPassword}`);
+    //console.log(`Username :${inputUsername}, Password :${inputPassword}`);
     if (inputUsername !== "coding_challenge_1" || inputPassword !== "coding_challenge_1") {
       setAlert('Incorrect username or password.');
       setLoading(false);
       return;
     }
-    const response = authenticate(inputUsername, inputPassword);
+    // const response = await authenticate(inputUsername, inputPassword)
+    // console.log("RESPONSE: ", response);
     // const accessToken = response?.token;
     // const roles = response?.privileges;
-    //setAuth({username: inputUsername, password: inputPassword, accessToken, roles});
+    // const fullName = response?.fullName;
+    // setAuth({username: fullName, accessToken, roles});
+    setAuth({username: "jofnDOe", accessToken: "ggg", roles:["placeOrder", "items", "orderStatus", "queryOrders"]});
 
     // clear input fields
     setInputUsername('');
